@@ -71,13 +71,16 @@ public class SpanishLessons extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        if(container != null){
+            container.removeAllViews();
+        }
         return inflater.inflate(R.layout.fragment_spanish_lessons, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed(Context context) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction(context);
         }
     }
 
@@ -110,6 +113,6 @@ public class SpanishLessons extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Context context);
     }
 }

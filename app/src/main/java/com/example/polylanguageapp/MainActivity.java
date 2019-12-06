@@ -1,18 +1,32 @@
 package com.example.polylanguageapp;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.example.polylanguageapp.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity implements SpanishLessons.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements DashboardFragment.languageSelectListener, SpanishLessons.OnFragmentInteractionListener{
+
+    @Override
+    public void onLanguageSelection() {
+        SpanishLessons spanishLessons = new SpanishLessons();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, spanishLessons);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +44,7 @@ public class MainActivity extends AppCompatActivity implements SpanishLessons.On
     }
 
     @Override
-    public void onAttachFragment(Fragment fragment) {
-        if (fragment instanceof SpanishLessons){
-            SpanishLessons spanishLessons = (SpanishLessons) fragment;
-            spanishLessons.setOnFragmentInteractionListener(this);
-        }
+    public void onFragmentInteraction(Context context) {
+
     }
 }
