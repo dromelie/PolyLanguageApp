@@ -12,7 +12,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity implements SpanishLessons.OnFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity { //implements SpanishLessons.OnFragmentInteractionListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements SpanishLessons.On
     public void onAttachFragment(Fragment fragment) {
         if (fragment instanceof SpanishLessons){
             SpanishLessons spanishLessons = (SpanishLessons) fragment;
-            spanishLessons.setOnFragmentInteractionListener(this);
+            //spanishLessons.setOnFragmentInteractionListener(this);
         }
     }
 }
